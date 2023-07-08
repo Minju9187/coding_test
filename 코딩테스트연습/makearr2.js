@@ -1,3 +1,4 @@
+//https://school.programmers.co.kr/learn/courses/30/lessons/181921
 //5와 0만 있는지 확인하는 함수
 function zerofive(n) {
   let a;
