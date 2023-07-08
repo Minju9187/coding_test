@@ -1,4 +1,4 @@
-// /https://school.programmers.co.kr/learn/courses/30/lessons/12930
+//https://school.programmers.co.kr/learn/courses/30/lessons/68935
 function solution(n) {
     var answer = 0;
     var str3,str3_reverse;
