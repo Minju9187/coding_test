@@ -1,4 +1,3 @@
-//https://school.programmers.co.kr/learn/courses/30/lessons/12930
 function solution(s) {
   var answer = "";
   let arr;
@@ -7,14 +6,15 @@ function solution(s) {
   let reset = 1;
   arr = s.split("");
   for (let i = 0; i < arr.length; i++, reset++) {
+    if (arr[i] == " ") {
+      reset = 0;
+      continue;
+    }
     if (reset % 2 == 1) {
       arr[i] = arr[i].toUpperCase();
     }
     if (reset % 2 == 0) {
       arr[i] = arr[i].toLowerCase();
-    }
-    if (arr[i] == " ") {
-      reset = 0;
     }
   }
   answer = arr.join("");
