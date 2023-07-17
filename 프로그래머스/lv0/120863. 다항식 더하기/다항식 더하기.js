@@ -1,5 +1,3 @@
-//include함수 특정한 문자를 포함하고 있으면 true를 반환
-//replace함수 특정한 문자를 다른 문자로 변환
 function solution(polynomial) {
     var answer = '';
     let arr = [];
@@ -41,3 +39,6 @@ function solution(polynomial) {
     }
     return answer;
 }
+
+// include함수 특정한 문자를 포함하고 있으면 true를 반환
+// replace함수 특정한 문자를 다른 문자로 변환
