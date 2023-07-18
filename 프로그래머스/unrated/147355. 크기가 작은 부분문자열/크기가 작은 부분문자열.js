@@ -3,7 +3,8 @@ function solution(t, p) {
     let n = p.length;
     let str = "";
     for(let i=0;i<t.length - n+1;i++){
-        str = t.substring(i,i+n);
+        // t.slice(idx,idx+pLength)
+        str = t.slice(i,i+n);
         if(p>=parseInt(str)){
             answer+=1;
         }
