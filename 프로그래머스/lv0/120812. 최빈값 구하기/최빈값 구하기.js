@@ -1,5 +1,4 @@
 function solution(arr) {
-    // arr = [999,999,0,0,1,1,0];
     var answer = 0;
     let value_arr = [];
     let num_arr = [];
@@ -14,8 +13,6 @@ function solution(arr) {
         if(arr[i]!=arr[i+1]) value_arr.push(arr[i]);
     }
     value_arr.push(arr[arr.length-1]);
-    
-    // console.log(...value_arr);
 
     //value 값마다 몇개씩 원소를 갖고있는지 찾아서 num_arr에 차례대로 넣음
     for(let i=0;i<value_arr.length;i++){
@@ -28,10 +25,9 @@ function solution(arr) {
         num_arr.push(num);
     }
     
-    // console.log(...num_arr);
     //num_arr중 최댓값을 찾음
     max = Math.max(...num_arr);
-    // console.log(max);
+
     //최댓값과 같은 값이 한개인지 두개 이상인지 확인
     //확인 했을 때의 index를 반환
     for(let i=0 ; i<num_arr.length ; i++){
@@ -41,13 +37,14 @@ function solution(arr) {
         }
         if(check > 1)break;
     }
-    // console.log(check,key);
+    //최빈값이 2개 이상이면 -1
     if(check > 1){
         answer = -1;
     }
+    //최빈값이 1개면 key를 넣어 value를 출력
     else{
         answer = value_arr[key];
     }
-    // console.log(answer);
+
     return answer;
 }
