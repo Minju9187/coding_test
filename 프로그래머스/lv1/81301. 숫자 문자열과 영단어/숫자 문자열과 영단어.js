@@ -12,7 +12,7 @@ function solution(s) {
     s=replaceAll(s,'nine',9);
     return Number(s);
 }
-
+// serchStr을 기준으로 쪼갠 후 그 곳에 대체 텍스트를 넣고 합쳐준다.
 function replaceAll(str, searchStr, replaceStr) {
   return str.split(searchStr).join(replaceStr);
 }
