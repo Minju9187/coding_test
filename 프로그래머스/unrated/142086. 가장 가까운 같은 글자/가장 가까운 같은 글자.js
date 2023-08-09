@@ -7,13 +7,12 @@ function solution(s) {
         }
         else{
             for(let j=i-1;j>=0;j--){
-                if(arr.indexOf(arr[i],j) != -1&&arr.indexOf(arr[i],j)!=i){
+                if(arr.indexOf(arr[i],j) != i){
                     answer.push(i-j)
                     break;
                 }
             }
         }
     }
-    console.log(...answer)
     return answer;
 }
