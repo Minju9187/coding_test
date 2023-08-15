@@ -1,5 +1,6 @@
 function solution(numlist, n) {
     var answer = [];
+    numlist.sort((a,b)=>a-n)
     let key1,key2;
     let temp;
     for(let i=0;i<numlist.length-1;i++){
@@ -15,9 +16,19 @@ function solution(numlist, n) {
                 temp = numlist[j-1];
                 numlist[j-1] = numlist[j];
                 numlist[j] = temp;
-                console.log(...numlist)
             }
         }
     }
     return numlist;
 }
+// function solution(numlist, n) {
+//     numlist.sort((a,b) => {
+//         if(Math.abs(n - a) === Math.abs(n - b)){
+//             if(a > b) return -1
+//             else return 1;
+//         }
+//         else if(Math.abs(n - a) > Math.abs(n - b)) return 1;
+//         else return -1;
+//     })
+//     return numlist;
+// }
