@@ -8,7 +8,7 @@ function solution(k, score) {
             answer[k-1]=score[i];
         }
         answer.sort((a,b)=>b-a);
-        result.push(Math.min(...answer));
+        result.push(answer[answer.length-1]);
     }
     return result;
 }
