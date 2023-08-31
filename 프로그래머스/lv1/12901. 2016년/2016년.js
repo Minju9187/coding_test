@@ -6,8 +6,7 @@ function solution(a, b) {
     for(let i = 0;i < a-1;i++){
         sum += month[i];
     }
-    sum += b;
-    sum -= 1;
+    sum += b-1;
     answer = week[sum%7];
     return answer;
 }
