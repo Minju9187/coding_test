@@ -1,19 +1,18 @@
 function solution(k, tangerine) {
-    var answer = 0;
-    let type = {};
-    let cnt = [];
-    let sum = 0,i=0;
-    tangerine.forEach(v=>{
-        if(type[v]>=1)type[v]++;
-        else type[v]=1;
+    let size = {}
+    let result = 0
+    let count = 0
+    tangerine.forEach(e => {
+        size[e-1] ? size[e-1]++ : size[e-1] = 1 
     })
-    cnt = Object.values(type);
-    cnt.sort((a,b)=>b-a);
-    while(true){
-        sum+=cnt[i];
-        answer++;
-        if(sum>=k)break;
-        i++;
+    let value = Object.values(size)
+    value.sort((a,b) => b-a)
+    for(let i = 0; i < value.length; i++){
+        result += value[i]
+        count++
+        if(result >= k){
+            break;
+        }
     }
-    return answer;
+    return count
 }
