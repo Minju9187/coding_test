@@ -5,6 +5,7 @@ function solution(str1, str2) {
     let union = [];
     let inter = [];
     const regex = /[\W0-9_]/
+    
     str1 = str1.toUpperCase().split("");
     str2 = str2.toUpperCase().split("");
     
