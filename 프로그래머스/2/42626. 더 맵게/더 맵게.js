@@ -6,50 +6,57 @@ class MinHeap {
   size() {
     return this.heap.length;
   }
-      
-    // 값을 넣되, 오름차 순 정렬함
+
   push(value) {
     this.heap.push(value);
-    let currentIndex = this.heap.length - 1;
-
-    while (
-      currentIndex > 0 &&
-      this.heap[currentIndex] < this.heap[Math.floor((currentIndex - 1) / 2)]
-    ) {
-      const temp = this.heap[currentIndex];
-      this.heap[currentIndex] = this.heap[Math.floor((currentIndex - 1) / 2)];
-      this.heap[Math.floor((currentIndex - 1) / 2)] = temp;
-      currentIndex = Math.floor((currentIndex - 1) / 2);
-    }
+    this.heapifyUp();
   }
 
-    // 값을 빼되, 오름차 순 정렬 함
   pop() {
     if (this.heap.length === 0) return null;
     if (this.heap.length === 1) return this.heap.pop();
 
     const minValue = this.heap[0];
     this.heap[0] = this.heap.pop();
-    let currentIndex = 0;
-
-    while (currentIndex * 2 + 1 < this.heap.length) {
-      let minChildIndex = currentIndex * 2 + 2 < this.heap.length && this.heap[currentIndex * 2 + 2] < this.heap[currentIndex * 2 + 1] ? currentIndex * 2 + 2 : currentIndex * 2 + 1;
-
-      if (this.heap[currentIndex] < this.heap[minChildIndex]) {
-        break;
-      }
-
-      const temp = this.heap[currentIndex];
-      this.heap[currentIndex] = this.heap[minChildIndex];
-      this.heap[minChildIndex] = temp;
-      currentIndex = minChildIndex;
-    }
+    this.heapifyDown(0);
 
     return minValue;
   }
 
   peek() {
     return this.heap[0];
+  }
+
+  heapifyUp() {
+    let currentIndex = this.heap.length - 1;
+
+    while (currentIndex > 0) {
+      const parentIndex = Math.floor((currentIndex - 1) / 2);
+
+      if (this.heap[currentIndex] >= this.heap[parentIndex]) {
+        break;
+      }
+
+      [this.heap[currentIndex], this.heap[parentIndex]] = [this.heap[parentIndex], this.heap[currentIndex]];
+      currentIndex = parentIndex;
+    }
+  }
+
+  heapifyDown(startIndex) {
+    let currentIndex = startIndex;
+
+    while (currentIndex * 2 + 1 < this.heap.length) {
+      const leftChildIndex = currentIndex * 2 + 1;
+      const rightChildIndex = currentIndex * 2 + 2;
+      const minChildIndex = rightChildIndex < this.heap.length && this.heap[rightChildIndex] < this.heap[leftChildIndex] ? rightChildIndex : leftChildIndex;
+
+      if (this.heap[currentIndex] <= this.heap[minChildIndex]) {
+        break;
+      }
+
+      [this.heap[currentIndex], this.heap[minChildIndex]] = [this.heap[minChildIndex], this.heap[currentIndex]];
+      currentIndex = minChildIndex;
+    }
   }
 }
 
