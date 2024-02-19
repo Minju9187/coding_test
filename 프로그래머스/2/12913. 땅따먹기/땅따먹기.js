@@ -1,9 +1,22 @@
 function solution(land) {
-    for (let i = 1; i < land.length; i++) {
-        for (let j = 0; j < 4; j++) {
-            //filter로 나랑 idx가 다른 위의 행에서 가장 큰 수를 찾아 더해줌
-            land[i][j] += Math.max(...land[i - 1].filter((_, idx) => j !== idx));
+    var answer = 0;
+    let arr = [];
+    let value, idx, beforeIdx;
+    for(let i = 0 ; i < land.length ; i++){       
+        if(i===0){
+            value = Math.max(...land[i]);
+            idx = land[i].findIndex(v => v===value);
+        }else{
+            value = Math.max(...land[i]);
+            idx = land[i].findIndex(v => v===value);
+            if(beforeIdx === idx){
+                land[i].splice(idx,1);
+                value = Math.max(...land[i]);
+                idx = land[i].findIndex(v => v===value);
+            }
         }
+        answer += value;
+        beforeIdx = idx;
     }
-    return Math.max(...land[land.length-1]);
+    return answer;
 }
