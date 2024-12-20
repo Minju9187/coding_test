@@ -15,15 +15,15 @@ console.log(cnt);
 
 function checkGoodWord(str) {
   const stack = [];
-  for (let char of str) {
+  for (let i = 0; i < str.length; i++) {
     if (
       stack.length > 0 &&
-      ((stack[stack.length - 1] === "A" && char === "A") ||
-        (stack[stack.length - 1] === "B" && char === "B"))
+      ((stack[stack.length - 1] === "A" && str[i] === "A") ||
+        (stack[stack.length - 1] === "B" && str[i] === "B"))
     ) {
       stack.pop();
     } else {
-      stack.push(char);
+      stack.push(str[i]);
     }
   }
   return stack.length === 0;
