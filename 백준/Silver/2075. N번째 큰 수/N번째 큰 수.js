@@ -12,7 +12,27 @@ class MinHeap {
 
   push(item) {
     this.heap.push(item);
+    this.heapifyUp();
+  }
+
+  pop() {
+    const root = this.heap[1];
+    if (this.heap.length > 2) {
+      this.heap[1] = this.heap.pop();
+      this.heapifyDown();
+    } else if (this.heap.length === 2) {
+      this.heap.pop();
+    }
+    return root;
+  }
+
+  size() {
+    return this.heap.length - 1;
+  }
+
+  heapifyUp() {
     let cur = this.heap.length - 1;
+    const item = this.heap[cur];
 
     while (cur > 1) {
       let parent = Math.floor(cur / 2);
@@ -24,42 +44,30 @@ class MinHeap {
     this.heap[cur] = item;
   }
 
-  pop() {
-    const root = this.heap[1];
-    if (this.heap.length > 2) {
-      this.heap[1] = this.heap.pop();
-      let cur = 1;
-      let leftChild = 2 * cur;
-      let rightChild = 2 * cur + 1;
+  heapifyDown() {
+    let cur = 1;
+    const item = this.heap[cur];
+    let leftChild = 2 * cur;
+    let rightChild = 2 * cur + 1;
 
-      while (this.heap[leftChild]) {
-        let smallest = leftChild;
-        if (
-          this.heap[rightChild] &&
-          this.heap[rightChild] < this.heap[leftChild]
-        ) {
-          smallest = rightChild;
-        }
-
-        if (this.heap[smallest] < this.heap[cur]) {
-          [this.heap[smallest], this.heap[cur]] = [
-            this.heap[cur],
-            this.heap[smallest],
-          ];
-          cur = smallest;
-        } else break;
-
-        leftChild = cur * 2;
-        rightChild = cur * 2 + 1;
+    while (this.heap[leftChild]) {
+      let smallest = leftChild;
+      if (
+        this.heap[rightChild] &&
+        this.heap[rightChild] < this.heap[leftChild]
+      ) {
+        smallest = rightChild;
       }
-    } else if (this.heap.length === 2) {
-      this.heap.pop();
-    }
-    return root;
-  }
 
-  size() {
-    return this.heap.length - 1;
+      if (this.heap[smallest] < item) {
+        this.heap[cur] = this.heap[smallest];
+        cur = smallest;
+      } else break;
+
+      leftChild = 2 * cur;
+      rightChild = 2 * cur + 1;
+    }
+    this.heap[cur] = item;
   }
 }
 
