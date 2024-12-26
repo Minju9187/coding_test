@@ -11,19 +11,18 @@ for (let i = 0; i < T; i++) {
 }
 
 function findWordLength(W, K) {
-  const map = new Map();
+  const obj = {};
   const words = [];
 
   for (let i = 0; i < W.length; i++) {
-    if (!map.has(W[i])) {
-      map.set(W[i], [i]);
+    if (!obj[W[i]]) {
+      obj[W[i]] = [i];
     } else {
-      const arr = [...map.get(W[i]), i];
-      map.set(W[i], arr);
+      obj[W[i]].push(i);
     }
   }
 
-  map.forEach((v) => {
+  Object.values(obj).forEach((v) => {
     if (v.length >= K) {
       for (i = 0; i < v.length - K + 1; i++) {
         words.push(v[i + K - 1] - v[i] + 1);
