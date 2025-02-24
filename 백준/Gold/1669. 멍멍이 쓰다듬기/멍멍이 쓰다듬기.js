@@ -22,7 +22,7 @@ answer += 2 * idx - 1;
 dif -= idx * idx;
 
 while (dif > 0) {
-  dif -= Math.min(idx, dif);
+  dif -= idx;
   answer++;
 }
 
