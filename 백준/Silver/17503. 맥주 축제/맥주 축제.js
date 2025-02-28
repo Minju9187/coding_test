@@ -73,7 +73,7 @@ const [N, M, K] = input.shift().split(" ").map(Number);
 //선호도, 도수 레벨 - 도수 레벨을 기준으로 오름차순
 const beer = input
   .map((v) => v.split(" ").map(Number))
-  .sort((a, b) => a[1] - b[1] || a[0] - b[1]);
+  .sort((a, b) => a[1] - b[1] || a[0] - b[0]);
 
 let sum = 0;
 let heap = new MinHeap();
