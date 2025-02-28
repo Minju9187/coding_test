@@ -70,10 +70,10 @@ class MinHeap {
 
 //열리는 기간, 선호도의 합, 맥주 종류 수
 const [N, M, K] = input.shift().split(" ").map(Number);
-//선호도, 도수 레벨
+//선호도, 도수 레벨 - 도수 레벨을 기준으로 오름차순
 const beer = input
   .map((v) => v.split(" ").map(Number))
-  .sort((a, b) => a[1] - b[1]);
+  .sort((a, b) => a[1] - b[1] || a[0] - b[1]);
 
 let sum = 0;
 let heap = new MinHeap();
